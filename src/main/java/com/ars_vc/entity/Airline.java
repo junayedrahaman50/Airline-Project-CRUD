@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,6 +33,10 @@ public class Airline {
 	
 	@OneToMany(mappedBy = "airline",cascade = CascadeType.ALL)
 	private List<Flight> flights;
-	
+	@Builder
+	public Airline(int id, String airlineName, float fare) {
+		this.airlineName = airlineName;
+		this.fare = fare;
+	}
 
 }

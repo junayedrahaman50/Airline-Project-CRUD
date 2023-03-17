@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -40,4 +41,16 @@ private String destination;
 @ManyToOne
 @JoinColumn(name="airline_id")
 private Airline airline;
+@Builder
+public Flight(int flight_id, int avilableSeats, int totalSeats, String travellerClass, String time, LocalDate date, String source, String destination) {
+	this.flight_id = flight_id;
+	this.avilableSeats = avilableSeats;
+	this.totalSeats = totalSeats;
+	this.travellerClass = travellerClass;
+	this.time = time;
+	this.date = date;
+	this.source = source;
+	this.destination = destination;
+}
+
 }
