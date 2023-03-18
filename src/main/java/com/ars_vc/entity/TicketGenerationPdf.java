@@ -26,22 +26,22 @@ public class TicketGenerationPdf {
 			f1.setSize(10);
 			
 			Paragraph p=new Paragraph("",f1);
-			p.add(ticketDTO.getAirlineId().getAirlineName()+"Ticket Id:"+ticketDTO.getTicketId());
+			p.add(ticketDTO.getAid().getAirlineName()+"Ticket Id:"+ticketDTO.getTicketId());
 			document.add(p);
 			
 			Paragraph p1=new Paragraph();
-			p1.add(ticketDTO.getPassengerId().getName());
+			p1.add(ticketDTO.getPid().getName());
 			p1.setAlignment(Element.ALIGN_LEFT);
 			 document.add(p1);
 	Chunk linebreak=new Chunk(new DottedLineSeparator());
 	document.add(linebreak);
 	Paragraph p2=new Paragraph();
-	p2.add("From: "+ticketDTO.getFlightId().getSource()+" "+"To: "+ticketDTO.getFlightId().getDestination()+" "+"Travel Date: "+ticketDTO.getFlightId().getDate().toString());
+	p2.add("From: "+ticketDTO.getFid().getSource()+" "+"To: "+ticketDTO.getFid().getDestination()+" "+"Travel Date: "+ticketDTO.getFid().getDate().toString());
 	document.add(p2);
 	
 	Paragraph p3=new Paragraph();
-	p3.add("flight id: "+ticketDTO.getFlightId().getFlight_id());
-	p3.add("Boarding time: "+ticketDTO.getFlightId().getTime());
+	p3.add("flight id: "+ticketDTO.getFid().getFlight_id());
+	p3.add("Boarding time: "+ticketDTO.getFid().getTime());
 	document.add(p3);
 	
 	Font f=new Font();

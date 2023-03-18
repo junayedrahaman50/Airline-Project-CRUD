@@ -13,7 +13,7 @@ import com.ars_vc.dao.PassengerDao;
 import com.ars_vc.entity.Passenger;
 
 public class PassengerDaoImpl implements PassengerDao{
-
+//method to create passenger in DAO layer
 	@Override
 	public void savePassenger(Passenger passenger) {
 		try(Session session=HibernateUtil.getSession())
@@ -28,7 +28,7 @@ public class PassengerDaoImpl implements PassengerDao{
 		}
 		
 	}
-
+//method for login 
 	@Override
 	public boolean login(String userName, String password) {
 		Session session=HibernateUtil.getSession();
@@ -38,7 +38,7 @@ public class PassengerDaoImpl implements PassengerDao{
 		else
 		return false;
 	}
-
+//method to fetch passenger by id in DAO layer
 	@Override
 	public Passenger getPassenger(int id) {
 		try(Session session=HibernateUtil.getSession())
@@ -52,9 +52,11 @@ public class PassengerDaoImpl implements PassengerDao{
 		
 		return null;
 	}
-
+//method to update passenger in DAO layer
 	@Override
 	public Passenger updatePassenger(int id, Passenger passenger) {
+		//We use load when we know data exists
+				//update passenger
 		try(Session session=HibernateUtil.getSession())
 		{
 			Passenger pass=(Passenger)session.load(Passenger.class, id);
@@ -65,7 +67,10 @@ public class PassengerDaoImpl implements PassengerDao{
 			pass.setPassword(passenger.getPassword());
 			
 			session.beginTransaction();
+			//save and update fetched data
+			//pass contains the updated values
 			session.saveOrUpdate(pass);
+			//commit
 			session.getTransaction().commit();
 			return pass;
 			
@@ -74,13 +79,14 @@ public class PassengerDaoImpl implements PassengerDao{
 		}
 		return null;
 	}
-
+//method to delete passenger in DAO layer
 	@Override
 	public void deletePassenger(int id) throws PersistenceException {
 		try(Session session=HibernateUtil.getSession())
 		{
 			Passenger passn=session.load(Passenger.class,id);
 			session.beginTransaction();
+			//Delete fetched passenger
 			session.delete(passn);
 			session.getTransaction().commit();
 		}catch (HibernateException e) {
@@ -88,7 +94,7 @@ public class PassengerDaoImpl implements PassengerDao{
 		}
 		
 	}
-
+//method to fetch passenger using email in DAO layer
 	@Override
 	public Passenger getPassengerByEmail(String email) {
 		try(Session session=HibernateUtil.getSession())

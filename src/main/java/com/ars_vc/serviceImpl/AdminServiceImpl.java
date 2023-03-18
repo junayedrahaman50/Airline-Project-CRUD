@@ -13,12 +13,13 @@ import com.ars_vc.service.AdminService;
 
 public class AdminServiceImpl implements AdminService{
 	AdminDao aDao=new AdminDaoImpl();
+	//Admin Creation
 	@Override
 	public void registerAdmin(Admin admin) {
 		aDao.registerAdmin(admin);
 		
 	}
-
+//Admin login
 	@Override
 	public boolean loginAdmin(String userName, String password) {
 		

@@ -60,7 +60,7 @@ static void tearDown() {
 @Order(1)
 void testAddAirline() {
 	Transaction tx = session.beginTransaction();
-	Airline airline = Airline.builder().airlineName("Vistara").fare(2000).build();
+	Airline airline = Airline.builder().airlineName("Air India").fare(3000).build();
 	//count data entries
 	Integer i = (Integer)session.save(airline);
 	tx.commit();

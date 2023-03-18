@@ -18,13 +18,16 @@ import com.ars_vc.entity.TicketBooking;
 import com.ars_vc.entity.User;
 
 public class HibernateUtil {
+	//reference variable of session factory interface
 	private static SessionFactory sessionFactory;
-	
+	//method of return type SessionFactory used for connection
 	public static SessionFactory getSessionFactory()
 	{
 		if(sessionFactory==null) {
+			//reference variable of Configuration class
 			try{
 				Configuration configuration=new Configuration();
+				//object of properties class
 				Properties settings=new Properties();
 				settings.put(Environment.DRIVER,"com.mysql.jdbc.Driver");
 				settings.put(Environment.URL, "jdbc:mysql://localhost:3306/projects");
@@ -33,10 +36,13 @@ public class HibernateUtil {
 				settings.put(Environment.DIALECT,"org.hibernate.dialect.MySQL8Dialect");
 				settings.put(Environment.SHOW_SQL,"true");
 				settings.put(Environment.HBM2DDL_AUTO, "update");
+				//using thread for concurrent execution
 				settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS,"thread");
 				settings.put(Environment.ENABLE_LAZY_LOAD_NO_TRANS,"true");
+				//passing settings to set properties
 				configuration.setProperties(settings);
 				
+				//mapping classes
 			configuration.addAnnotatedClass(User.class);
 				configuration.addAnnotatedClass(Admin.class);
 			configuration.addAnnotatedClass(Passenger.class);
@@ -54,6 +60,7 @@ public class HibernateUtil {
 			}
 			
 		}
+		//return sessionFactory
 		return sessionFactory;
 	}
 	public static Session getSession()

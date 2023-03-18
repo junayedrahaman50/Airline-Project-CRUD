@@ -359,8 +359,7 @@ System.out.println("============================================================
 			String airName=JOptionPane.showInputDialog("Enter airline Name","Type here");
 			TicketBookingDTO ticketDTO=tService.bookFlight(flight_id, date, pEmail, no_of_passenger, airName);
 			System.out.println("Your booking has done successfully");
-			System.out.println("Airline name: "+ticketDTO.getAirlineId().getAirlineName());
-			//TicketGenerationPdf.ticketGeneration(ticketDTO);
+			TicketGenerationPdf.ticketGeneration(ticketDTO);
 		}
 		}
 		
@@ -370,11 +369,11 @@ System.out.println("============================================================
 			System.out.println();
 			TicketBookingDTO tDto=tService.getTicket(Integer.parseInt(JOptionPane.showInputDialog("enter ticket id","type here")));
 			System.out.println("=========================================================");
-			System.out.println("Airways: "+tDto.getAirlineId().getAirlineName()+"\t\tBOARDING PASS");
+			System.out.println("Airways: "+tDto.getAid().getAirlineName()+"\t\tBOARDING PASS");
 			System.out.println("Ticket No: "+tDto.getTicketId());
-			System.out.println("Name: "+tDto.getPassengerId().getName()+"\tNo_of_passengers "+tDto.getNo_of_passenger());
-			System.out.println("from "+tDto.getFlightId().getSource()+"\t\t To: "+tDto.getFlightId().getDestination());
-			System.out.println("Flight: "+tDto.getFlightId().getFlight_id()+"\t\tDate: "+tDto.getFlightId().getDate());
+			System.out.println("Name: "+tDto.getPid().getName()+"\tNo_of_passengers "+tDto.getNo_of_passenger());
+			System.out.println("from "+tDto.getFid().getSource()+"\t\t To: "+tDto.getFid().getDestination());
+			System.out.println("Flight: "+tDto.getFid().getFlight_id()+"\t\tDate: "+tDto.getFid().getDate());
 			System.out.println("=========================================================");
 		}
 public static void checkFlights()

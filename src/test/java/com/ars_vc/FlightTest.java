@@ -3,6 +3,8 @@ package com.ars_vc;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDate;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -20,10 +22,13 @@ import org.junit.jupiter.api.TestMethodOrder;
 import com.ars_vc.config.HibernateUtil;
 import com.ars_vc.entity.Flight;
 import com.ars_vc.model.FlightDTO;
+import com.ars_vc.service.AirlineService;
 import com.ars_vc.service.FlightService;
+import com.ars_vc.serviceImpl.AirlineServiceImpl;
 import com.ars_vc.serviceImpl.FlightServiceImpl;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class FlightTest {
+AirlineService aService = new AirlineServiceImpl();
 FlightService flightService = new FlightServiceImpl();
 public static SessionFactory sessionFactory;
 private Session session;
@@ -58,7 +63,7 @@ static void tearDown() {
 @Order(1)
 void testCreateFlight() {
 	Transaction tx = session.beginTransaction();
-	Flight flight = Flight.builder().avilableSeats(2).totalSeats(200).source("Mumbai").destination("Delhi").travellerClass("Economy").build();	
+	Flight flight = Flight.builder().avilableSeats(2).totalSeats(200).source("Mumbai").destination("Delhi").travellerClass("Economy").date(LocalDate.of(2023, 03, 18)).build();	
 	//count data entries
 	Integer i = (Integer)session.save(flight);
 	tx.commit();
@@ -81,6 +86,9 @@ void testUpdateFlight() {
 	ft.setAvilableSeats(200);
 	ft.setSource("Mumbai");
 	ft.setDestination("Chennai");
+	ft.setDate(LocalDate.of(2023, 03, 18));
+	ft.setTime("3:00AM");
+	ft.setTotalSeats(200);
 	FlightDTO fdto = flightService.updateFlight(1, ft);
 	tx.commit();
 	assertThat(fdto.getTravellerClass()).isEqualTo("Business");
@@ -90,8 +98,8 @@ void testUpdateFlight() {
 @Order(4)
 @DisplayName(value="Negative Test Case")
 void testDeleteFlight() {
-	flightService.deleteFlight(10);
-	assertThrows(HibernateException.class, ()->flightService.deleteFlight(10));
+	flightService.deleteFlight(3);
+	assertThrows(HibernateException.class, ()->flightService.deleteFlight(3));
 }
 
 }

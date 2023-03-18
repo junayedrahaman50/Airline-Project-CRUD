@@ -16,18 +16,19 @@ import com.ars_vc.service.FlightService;
 
 public class FlightServiceImpl implements FlightService{
 FlightDAO flightDAO=new FlightDAOImpl();
+//create flight in service layer
 	@Override
 	public void saveFlight(Flight flight) {
 		flightDAO.saveFlight(flight);
 		
 	}
-
+//update flight in service layer
 	@Override
 	public FlightDTO updateFlight(int id, Flight flight) {
 		Flight f=flightDAO.updateFlight(id, flight);
 		return new ModelMapper().map(f, FlightDTO.class);
 	}
-
+//read flight in service layer 
 	@Override
 	public FlightDTO getFlight(int id)throws GlobalException {
 		Flight flight=flightDAO.getFlight(id);
@@ -37,13 +38,13 @@ FlightDAO flightDAO=new FlightDAOImpl();
 		}
 		throw new GlobalException("Flight detalis not exist");
 		}
-
+//delete flight in service layer
 	@Override
 	public void deleteFlight(int id) throws PersistenceException {
 	
 		flightDAO.deleteFlight(id);
 	}
-
+//Flight checker
 	@Override
 	public List<Flight> checkFlight(String from, String to, LocalDate date) {
 		

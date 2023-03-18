@@ -25,7 +25,7 @@ FlightDAO fdao=new FlightDAOImpl();
 AirlineDAO adao=new AirlineDAOImpl();
 PassengerDao pdao=new PassengerDaoImpl();
 TicketDAO tdao=new TicketDAOImpl();
-	
+//method for ticket booking in service layer	
 @Override
 public TicketBookingDTO bookFlight(int flight_id, LocalDate date, String pEmail, int no_of_passenger,
 		String airName) {
@@ -41,12 +41,13 @@ public TicketBookingDTO bookFlight(int flight_id, LocalDate date, String pEmail,
 	}
 	return null;
 }
+//method for cancel booking by id in service layer
 	@Override
 	public void cancelBooking(int id) {
 		tdao.cancelBooking(id);
 		
 	}
-
+//method to fetch ticket in service layer  
 	@Override
 	public TicketBookingDTO getTicket(int id) {
 		TicketBooking tick=tdao.getTicket(id);

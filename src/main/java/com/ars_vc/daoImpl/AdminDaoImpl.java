@@ -13,6 +13,7 @@ import com.ars_vc.entity.Admin;
 public class AdminDaoImpl implements AdminDao{
 
 	@Override
+	//create admin in db
 	public void registerAdmin(Admin admin) {
 		Session session=HibernateUtil.getSession();
 		session.beginTransaction();
@@ -22,10 +23,11 @@ public class AdminDaoImpl implements AdminDao{
 		session.close();
 		
 	}
-
+//login admin
 	@Override
 	public boolean loginAdmin(String userName, String password) {
 		Session session=HibernateUtil.getSession();
+		//Fetch Data
 		Admin admin=(Admin)session.get(Admin.class,Integer.parseInt(JOptionPane.showInputDialog("Enter id: ","type here")));
 		if(admin.getUserName().equals(userName)&& admin.getPassword().equals(password))
 		return true;
@@ -35,6 +37,7 @@ public class AdminDaoImpl implements AdminDao{
 	//method for get admin in DAO layer
 			@Override
 			public Admin getAdminById(int id) {
+				//Fetch admin data
 				try(Session session=HibernateUtil.getSession()){
 					Admin admin=(Admin)session.get(Admin.class, id);
 					
@@ -80,6 +83,8 @@ public class AdminDaoImpl implements AdminDao{
 			//method for Update admin  in DAO layer
 			@Override
 			public Admin updateAdmin(int id, Admin admin) {
+				//We use load when we know data exists
+				//update admin
 				try(Session session=HibernateUtil.getSession()){
 					Admin adm=(Admin)session.load(Admin.class, id);
 					
@@ -90,7 +95,10 @@ public class AdminDaoImpl implements AdminDao{
 					adm.setPassword(admin.getPassword());
 					
 					session.beginTransaction();
+					//save and update fetched data
+					//pass contains the updated values
 					session.saveOrUpdate(adm);
+					//commit
 					session.getTransaction().commit();
 					
 					return adm;// return passenger entity

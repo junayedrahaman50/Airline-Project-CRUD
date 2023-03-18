@@ -16,7 +16,7 @@ import com.ars_vc.entity.Airline;
 import com.ars_vc.entity.Flight;
 
 public class FlightDAOImpl implements FlightDAO{
-
+//method to create Flight in DAO layer
 	@Override
 	public void saveFlight(Flight flight) {
 		try(Session session=HibernateUtil.getSession())
@@ -32,7 +32,7 @@ public class FlightDAOImpl implements FlightDAO{
 		}
 		
 	}
-
+//method to update Flight in DAO layer
 	@Override
 	public Flight updateFlight(int id,Flight flight) {
 		try(Session session=HibernateUtil.getSession())
@@ -57,7 +57,7 @@ public class FlightDAOImpl implements FlightDAO{
 		}
 		return null;
 	}
-
+//method to fetch Flight in DAO layer
 	@Override
 	public Flight getFlight(int id) {
 		try(Session session=HibernateUtil.getSession())
@@ -71,7 +71,7 @@ public class FlightDAOImpl implements FlightDAO{
 		}
 		return null;
 	}
-
+//method to delete Flight in DAO layer
 	@Override
 	public void deleteFlight(int id) throws PersistenceException {
 		try(Session session=HibernateUtil.getSession())
@@ -93,7 +93,7 @@ public class FlightDAOImpl implements FlightDAO{
 			throw new PersistenceException("can not delete airline bacause data is booked");
 		}
 	}
-
+//method to check flight in DAO layer
 	@Override
 	public List<Flight> checkFlight(String from, String to, LocalDate date) {
 		try(Session session=HibernateUtil.getSession())

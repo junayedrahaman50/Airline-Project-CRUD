@@ -18,6 +18,7 @@ import com.ars_vc.entity.Flight;
 public class AirlineDAOImpl implements AirlineDAO{
 
 	@Override
+	//create airline in DAO layer
 	public void saveAirline(Airline airline) {
 		try(Session session=HibernateUtil.getSession())
 		{
@@ -32,7 +33,7 @@ public class AirlineDAOImpl implements AirlineDAO{
 		}
 		
 	}
-
+//method for assigning flight to airline
 	@Override
 	public void assignAirlineToFlight(int flightId, int airId) {
 		try(Session session=HibernateUtil.getSession())
@@ -53,7 +54,7 @@ public class AirlineDAOImpl implements AirlineDAO{
 		}
 		
 	}
-
+//method to fetch airline in DAO layer
 	@Override
 	public Airline getAirlineByName(String name) {
 		try(Session session=HibernateUtil.getSession())
@@ -70,7 +71,7 @@ public class AirlineDAOImpl implements AirlineDAO{
 		}
 		return null;
 	}
-
+//method to update airline in DAO layer
 	@Override
 	public Airline updateAirlineById(int id, Airline airline) {
 		try(Session session=HibernateUtil.getSession())
@@ -89,7 +90,7 @@ public class AirlineDAOImpl implements AirlineDAO{
 		}
 		return null;
 	}
-
+//method to delete airline in DAO layer
 	@Override
 	public void deleteAirline(int id) throws PersistenceException {
 		try(Session session=HibernateUtil.getSession())

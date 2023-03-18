@@ -15,7 +15,7 @@ import com.ars_vc.entity.Passenger;
 import com.ars_vc.entity.TicketBooking;
 
 public class TicketDAOImpl implements TicketDAO{
-
+//method for booking flight
 	@Override
 	public TicketBooking bookFlight(Airline airline, Passenger p, LocalDate date, Flight f, int no_of_passenger,
 			float total_fare, int avilable_seat) {
@@ -43,7 +43,7 @@ public class TicketDAOImpl implements TicketDAO{
 		}
 		return null;
 	}
-
+//method for cancel booking
 	@Override
 	public void cancelBooking(int id) {
 		try(Session session=HibernateUtil.getSession()) {
@@ -65,7 +65,7 @@ public class TicketDAOImpl implements TicketDAO{
 		}
 		
 	}
-
+//method to fetch ticket
 	@Override
 	public TicketBooking getTicket(int id) {
 		try(Session session=HibernateUtil.getSession()) {
