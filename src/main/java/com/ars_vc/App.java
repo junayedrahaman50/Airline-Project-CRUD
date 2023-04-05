@@ -1,3 +1,19 @@
+/**
+ * This class represents Airline Java Project App
+ *
+ * @author Junayed Rahaman
+ * 
+ * 		The objective of this project is
+		1. There are 2 user level ADMIN and PASSENGER
+		2. ADMIN can perform CRUD for Flight for a particular Airline
+		for example Admin can create a new Flight for Air India 
+		3. Passenger can search a possible flight for a particular vendor (Indigo) then reserve.
+		Only cancel is allowed
+ 		no update facilty till now.After booking the ticket can be downloaded in PDF version
+ 		(APACHE POI)
+
+ */
+
 package com.ars_vc;
 
 import java.util.Scanner;
@@ -12,10 +28,7 @@ import com.ars_vc.service.PassengerService;
 import com.ars_vc.serviceImpl.AdminServiceImpl;
 import com.ars_vc.serviceImpl.PassengerServiceImpl;
 
-/**
- * Hello world!
- *
- */
+
 public class App 
 {
     public static void main( String[] args )

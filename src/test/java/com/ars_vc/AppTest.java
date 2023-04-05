@@ -5,7 +5,9 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 /**
- * Unit test for simple App.
+ * This class represents Testing of Airline Java Project
+ *
+ * @author Junayed Rahaman
  */
 public class AppTest 
     extends TestCase
